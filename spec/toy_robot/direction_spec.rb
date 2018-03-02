@@ -1,6 +1,17 @@
 require "spec_helper"
 RSpec.describe ToyRobot::Direction do
   describe '#turn_right' do
+    context 'when an invalid direction is given' do
+      let(:position) { ToyRobot::Position.new(x: 0, y: 0, direction: 'NORTHWEST') }
+      let(:direction) { ToyRobot::Direction.new(position: position) }
+
+      it 'returns empty string' do
+        direction.turn_right
+
+        expect(position.direction).to eq('')
+      end
+    end
+
     context 'when current direction is WEST' do
       let(:position) { ToyRobot::Position.new(x: 0, y: 0, direction: 'WEST') }
       let(:direction) { ToyRobot::Direction.new(position: position) }
