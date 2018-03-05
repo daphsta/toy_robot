@@ -42,7 +42,7 @@ module ToyRobot
     def report
       current_position = robot.report
 
-      puts "Robot is currently at (#{current_position[:x]}, #{current_position[:y]}) and it's facing #{current_position[:direction]}"
+      puts "Robot is currently at (#{current_position.x}, #{current_position.y}) and it's facing #{current_position.direction}"
     end
   end
 end

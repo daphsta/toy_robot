@@ -6,7 +6,7 @@ module ToyRobot
     end
 
     def report
-      position.to_h
+      position
     end
 
     def move

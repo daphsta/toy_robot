@@ -7,13 +7,5 @@ module ToyRobot
       @y = y
       @direction = direction
     end
-
-    def to_h
-      {
-        x: x,
-        y: y,
-        direction: direction
-      }
-    end
   end
 end
