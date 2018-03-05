@@ -9,7 +9,10 @@ RSpec.describe ToyRobot::Robot do
       it 'moves 3 spaces towards North' do
         3.times { robot.move }
 
-        expect(robot.report).to eq([0, 3, 'NORTH'])
+        expect(robot.report).to eq({
+          x: 0,
+          y: 3,
+          direction: 'NORTH'})
       end
     end
 
@@ -21,7 +24,10 @@ RSpec.describe ToyRobot::Robot do
         it 'moves to the limit of table height towards North' do
           5.times { robot.move }
 
-          expect(robot.report).to eq([0, 3, 'NORTH'])
+          expect(robot.report).to eq({
+            x: 0,
+            y: 3,
+            direction: 'NORTH'})
         end
       end
 
@@ -32,7 +38,10 @@ RSpec.describe ToyRobot::Robot do
         it 'moves to the limit of table height towards EAST' do
           5.times { robot.move }
 
-          expect(robot.report).to eq([3, 0, 'EAST'])
+          expect(robot.report).to eq({
+            x: 3,
+            y: 0,
+            direction: 'EAST'})
         end
       end
 
@@ -43,7 +52,10 @@ RSpec.describe ToyRobot::Robot do
         it 'moves to the limit of table height towards SOUTH' do
           5.times { robot.move }
 
-          expect(robot.report).to eq([0, 0, 'SOUTH'])
+          expect(robot.report).to eq({
+            x: 0,
+            y: 0,
+            direction: 'SOUTH'})
         end
       end
 
@@ -54,7 +66,10 @@ RSpec.describe ToyRobot::Robot do
         it 'moves to the limit of table height towards WEST' do
           5.times { robot.move }
 
-          expect(robot.report).to eq([0, 3, 'WEST'])
+          expect(robot.report).to eq({
+            x: 0,
+            y: 3,
+            direction: 'WEST'})
         end
       end
     end
@@ -67,7 +82,10 @@ RSpec.describe ToyRobot::Robot do
         it 'turns the correct direction' do
           3.times { robot.turn_left }
 
-          expect(robot.report).to eq([0, 0, 'EAST'])
+          expect(robot.report).to eq({
+            x: 0,
+            y: 0,
+            direction: 'EAST'})
         end
       end
     end
@@ -80,7 +98,10 @@ RSpec.describe ToyRobot::Robot do
         it 'turns the correct direction' do
           3.times { robot.turn_right }
 
-          expect(robot.report).to eq([0, 0, 'WEST'])
+          expect(robot.report).to eq({
+            x: 0,
+            y: 0,
+            direction: 'WEST'})
         end
       end
     end
