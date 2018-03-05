@@ -1,43 +1,35 @@
-# ToyRobot
+# Toy Robot
+## Introduction
+The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units.
+There are no other obstructions on the table surface. The robot is free to roam around the surface of the table.
+Any movement that would result in the robot falling from the table is prevented, however further valid movement
+commands are still allowed.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/toy_robot`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Requirements
+The application reads a file using a name passed in the command line, the following commands are valid:
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'toy_robot'
+```
+     PLACE X,Y,F
+     MOVE
+     LEFT
+     RIGHT
+     REPORT
 ```
 
-And then execute:
+* PLACE will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST.
+* The origin (0,0) is the SOUTHWEST most corner.
+* All commands are ignored until a valid PLACE is made.
+* MOVE will move the toy robot one unit forward in the direction it is currently
+facing.
+* LEFT and RIGHT rotates the robot 90 degrees in the specified direction without
+changing the position of the robot.
+* REPORT announces the X,Y and F of the robot.
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install toy_robot
+The file is assumed to have ASCII encoding. It is assumed that the PLACE command has only one space, that is PLACE 1, 2,
+NORTH is an invalid command. All commands must be in upcase, all lower and mixed case commands will be ignored
 
 ## Usage
+`./toyrobot commands.txt`
 
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/toy_robot. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the ToyRobot project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/toy_robot/blob/master/CODE_OF_CONDUCT.md).
+## Testing
+`bundle exec rspec`
