@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative 'lib/toy_robot'
+
+command = ToyRobot::CommandParser.new
+cli = ToyRobot::CLI.new(command, ARGV[0])
+cli.call

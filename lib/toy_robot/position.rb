@@ -8,8 +8,12 @@ module ToyRobot
       @direction = direction
     end
 
-    def to_s
-      [x, y, direction]
+    def to_h
+      {
+        x: x,
+        y: y,
+        direction: direction
+      }
     end
   end
 end

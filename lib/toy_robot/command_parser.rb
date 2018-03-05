@@ -2,12 +2,8 @@ module ToyRobot
   class CommandParser
     class Error < StandardError; end
 
-    def initialize(robot = Robot.new(position: Position.new, table: Table.new))
-      @robot = robot
-    end
-
     def call(input)
-      command, _, arg = input.partition(' ')
+      command, _, arg = input.strip.partition(' ')
 
       case command
       when /PLACE/ then place(arg)
@@ -27,9 +23,8 @@ module ToyRobot
     def place(arg)
       coord = arg.split(',')
 
-      robot.position.x = coord[0]
-      robot.position.y = coord[1]
-      robot.position.direction = coord[2]
+      position = Position.new(x: coord[0].to_i, y: coord[1].to_i, direction: coord[2])
+      @robot = Robot.new(position: position, table: Table.new(height: 5, width: 5))
     end
 
     def move
@@ -45,7 +40,9 @@ module ToyRobot
     end
 
     def report
-      robot.report
+      current_position = robot.report
+
+      puts "Robot is currently at (#{current_position[:x]}, #{current_position[:y]}) and it's facing #{current_position[:direction]}"
     end
   end
 end
