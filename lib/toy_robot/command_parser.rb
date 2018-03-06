@@ -24,7 +24,7 @@ module ToyRobot
       coord = arg.split(',')
 
       position = Position.new(x: coord[0].to_i, y: coord[1].to_i, direction: coord[2])
-      @robot = Robot.new(position: position, table: Table.new(height: 5, width: 5))
+      @robot = Robot.new(position: position, table: Table.new)
     end
 
     def move
