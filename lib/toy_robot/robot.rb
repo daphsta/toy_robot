@@ -10,7 +10,7 @@ module ToyRobot
     end
 
     def move
-      Move.new(position: position).call if ValidateMove.new(position: position, table: table).call
+      move_to_position if valid_move?
     end
 
     def turn_left
@@ -24,5 +24,13 @@ module ToyRobot
     private
 
     attr_reader :position, :table
+
+    def move_to_position
+      Move.new(position: position).call
+    end
+
+    def valid_move?
+      ValidateMove.new(position: position, table: table).call
+    end
   end
 end

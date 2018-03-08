@@ -6,7 +6,7 @@ module ToyRobot
     end
 
     def call
-      (0..table.height).cover?(potential_position.y) && (0..table.width).cover?(potential_position.x)
+      (0...table.height).cover?(potential_position.y) && (0...table.width).cover?(potential_position.x)
     end
 
     private

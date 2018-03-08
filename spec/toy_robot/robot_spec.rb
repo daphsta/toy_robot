@@ -19,7 +19,7 @@ RSpec.describe ToyRobot::Robot do
     context 'when position is out of table limits' do
       context 'moving out of limits towards NORTH' do
         let(:position) { ToyRobot::Position.new(x: 0, y: 0, direction: 'NORTH') }
-        let(:robot) { ToyRobot::Robot.new(position: position, table: ToyRobot::Table.new(height: 3, width: 3)) }
+        let(:robot) { ToyRobot::Robot.new(position: position, table: ToyRobot::Table.new(height: 4, width: 4)) }
 
         it 'moves to the limit of table height towards North' do
           5.times { robot.move }
@@ -33,7 +33,7 @@ RSpec.describe ToyRobot::Robot do
 
       context 'moving out of limits towards EAST' do
         let(:position) { ToyRobot::Position.new(x: 0, y: 0, direction: 'EAST') }
-        let(:robot) { ToyRobot::Robot.new(position: position, table: ToyRobot::Table.new(height: 3, width: 3)) }
+        let(:robot) { ToyRobot::Robot.new(position: position, table: ToyRobot::Table.new(height: 4, width: 4)) }
 
         it 'moves to the limit of table height towards EAST' do
           5.times { robot.move }
@@ -47,7 +47,7 @@ RSpec.describe ToyRobot::Robot do
 
       context 'moving out of limits towards SOUTH' do
         let(:position) { ToyRobot::Position.new(x: 0, y: 3, direction: 'SOUTH') }
-        let(:robot) { ToyRobot::Robot.new(position: position, table: ToyRobot::Table.new(height: 3, width: 3)) }
+        let(:robot) { ToyRobot::Robot.new(position: position, table: ToyRobot::Table.new(height: 4, width: 4)) }
 
         it 'moves to the limit of table height towards SOUTH' do
           5.times { robot.move }
@@ -61,7 +61,7 @@ RSpec.describe ToyRobot::Robot do
 
       context 'moving out of limits towards WEST' do
         let(:position) { ToyRobot::Position.new(x: 3, y: 3, direction: 'WEST') }
-        let(:robot) { ToyRobot::Robot.new(position: position, table: ToyRobot::Table.new(height: 3, width: 3)) }
+        let(:robot) { ToyRobot::Robot.new(position: position, table: ToyRobot::Table.new(height: 4, width: 4)) }
 
         it 'moves to the limit of table height towards WEST' do
           5.times { robot.move }
