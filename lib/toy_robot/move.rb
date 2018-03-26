@@ -8,7 +8,7 @@ module ToyRobot
     def call
       new_position = send("to_#{position.direction.downcase}")
 
-      return new_position if valid?(new_position)
+      return new_position if table.position_within_limit?(new_position)
 
       position
     end
@@ -16,11 +16,6 @@ module ToyRobot
     private
 
     attr_reader :position, :table
-
-    def valid?(potential_position)
-      (0...table.height).cover?(potential_position.y) &&
-      (0...table.width).cover?(potential_position.x)
-    end
 
     def to_north
       Position.new(

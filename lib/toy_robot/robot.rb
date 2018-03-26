@@ -6,7 +6,11 @@ module ToyRobot
     end
 
     def report
-      @current_position.to_h
+      current_position_result = @current_position.to_h
+
+      return current_position_result[:error] if current_position_result.has_key?(:error)
+
+      "Robot is currently at (#{current_position_result[:x]},#{current_position_result[:y]}) and it's facing #{current_position_result[:direction]}"
     end
 
     def place

@@ -2,7 +2,7 @@ module ToyRobot
   class Position
     COMPASS = ['NORTH', 'EAST', 'SOUTH', 'WEST'].freeze
 
-    attr_accessor :x, :y, :direction
+    attr_accessor :x, :y, :direction, :error
 
     def initialize(x:, y:, direction:)
       @x = x
@@ -15,7 +15,15 @@ module ToyRobot
         x: x,
         y: y,
         direction: direction
-      }
+      }.merge(error_hash)
+    end
+
+    private
+
+    def error_hash
+      return {} if error.nil?
+
+      { error: error }
     end
   end
 end

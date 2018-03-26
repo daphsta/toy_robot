@@ -8,6 +8,9 @@ module ToyRobot
     end
 
     def call
+      return position if table.position_within_limit?(position)
+
+      position.error = 'Place is invalid'
     end
   end
 end
