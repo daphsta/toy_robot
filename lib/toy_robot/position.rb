@@ -1,5 +1,7 @@
 module ToyRobot
   class Position
+    COMPASS = ['NORTH', 'EAST', 'SOUTH', 'WEST'].freeze
+
     attr_accessor :x, :y, :direction
 
     def initialize(x:, y:, direction:)

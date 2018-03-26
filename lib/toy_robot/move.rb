@@ -1,35 +1,57 @@
 module ToyRobot
   class Move
-    def initialize(position:)
+    def initialize(position:, table:)
       @position = position
+      @table = table
     end
 
     def call
-      send("to_#{position.direction.downcase}")
+      new_position = send("to_#{position.direction.downcase}")
+
+      return new_position if valid?(new_position)
+
+      position
     end
 
     private
 
-    attr_reader :position
+    attr_reader :position, :table
+
+    def valid?(potential_position)
+      (0...table.height).cover?(potential_position.y) &&
+      (0...table.width).cover?(potential_position.x)
+    end
 
     def to_north
-      position.y += 1
-      position
+      Position.new(
+        x: position.x,
+        y: position.y + 1,
+        direction: position.direction
+      )
     end
 
     def to_east
-      position.x += 1
-      position
+      Position.new(
+        x: position.x + 1,
+        y: position.y,
+        direction: position.direction
+      )
     end
 
     def to_south
-      position.y -= 1
-      position
+      Position.new(
+        x: position.x,
+        y: position.y - 1,
+        direction: position.direction
+      )
     end
 
     def to_west
-      position.x -= 1
-      position
+      Position.new(
+        x: position.x - 1,
+        y: position.y,
+        direction: position.direction
+      )
     end
   end
 end
